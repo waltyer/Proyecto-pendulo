@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Péndulo - Versión preliminar</title>
+
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<main>
+
+<h1>Simulación de Péndulo (Versión preliminar)</h1>
+
+<div class="grid">
+
+<!-- PARÁMETROS -->
+<section class="card">
+<h2>Parámetros de entrada</h2>
+
+<label>θ₀</label>
+<input id="theta0" type="number" step="0.1" value="0.5">
+
+<label>ω₀</label>
+<input id="omega0" type="number" step="0.1" value="0">
+
+<label>L</label>
+<input id="L" type="number" step="0.1" value="1">
+
+<label>h</label>
+<input id="h" type="number" step="0.01" value="0.05">
+
+<label>Tiempo</label>
+<input id="t" type="number" step="1" value="10">
+
+<button id="btnSimular">Simular</button>
+</section>
+
+<!-- RESULTADOS -->
+<section class="card">
+<h2>Resultados</h2>
+<pre id="tabla"></pre>
+</section>
+
+</div>
+
+<!-- SOLO UNA GRÁFICA -->
+<section class="card">
+<h2>Ángulo vs tiempo</h2>
+<canvas id="graf1"></canvas>
+</section>
+
+<!-- DESCRIPCIÓN SIMPLE -->
+<section class="card">
+<h2>Descripción</h2>
+<p>Simulación básica de un péndulo usando un método numérico para observar el comportamiento del ángulo en el tiempo.</p>
+</section>
+
+</main>
+
+<script src="dist/app.js"></script>
+
+</body>
+</html>
