@@ -1,138 +1,24 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* BODY */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #e2e8f0;
-    padding: 20px;
-}
-
-/* TÍTULO */
-h1 {
+    font-family: Arial;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #38bdf8;
+    background: #f4f4f4;
 }
 
-/* GRID */
-.grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-/* TARJETAS */
 .card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-    width: 320px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.02);
-}
-
-/* TARJETA GRANDE RESULTADOS */
-.card.resultados {
-    width: 700px;
-}
-
-/* SUBTÍTULOS */
-.card h2 {
-    margin-bottom: 10px;
-    color: #38bdf8;
-}
-
-/* TEXTOS */
-p {
-    font-size: 13px;
-    color: #94a3b8;
-    margin-bottom: 10px;
-}
-
-/* LABELS */
-label {
-    font-size: 14px;
-    margin-top: 5px;
-    display: block;
-}
-
-/* INPUTS */
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #334155;
-    color: white;
-}
-
-/* BOTÓN */
-button {
-    width: 100%;
-    padding: 12px;
-    background: #38bdf8;
-    border: none;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 10px;
-    transition: 0.2s;
-}
-
-button:hover {
-    background: #0ea5e9;
-    transform: scale(1.03);
-}
-
-/* TABLA (RESULTADOS) */
-pre {
-    max-height: 500px;
-    overflow-y: auto;
-    font-size: 13px;
-    background: #020617;
-    padding: 15px;
-    border-radius: 10px;
-    line-height: 1.5;
-    white-space: pre-wrap;
-}
-
-/* GRÁFICAS */
-canvas {
-    margin-top: 10px;
     background: white;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
     border-radius: 10px;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
     padding: 5px;
 }
 
-/* ANIMACIÓN MÁS BONITA */
-#animacion {
-    display: block;
-    margin: auto;
-    background: #f6f3f3;
-    border-radius: 50%;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .card {
-        width: 100%;
-    }
-
-    .card.resultados {
-        width: 100%;
-    }
+button {
+    padding: 10px;
+    cursor: pointer;
 }

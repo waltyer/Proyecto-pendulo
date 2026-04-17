@@ -2,64 +2,32 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Péndulo - Versión preliminar</title>
-
+<title>Avance - Serie de Taylor</title>
 <link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
+
 <body>
 
-<main>
+<h1>Cálculo del Seno con Serie de Taylor</h1>
 
-<h1>Simulación de Péndulo (Versión preliminar)</h1>
+<div class="card">
 
-<div class="grid">
+<label>Ángulo (radianes):</label>
+<input id="angulo" type="number" step="0.1" value="0.5">
 
-<!-- PARÁMETROS -->
-<section class="card">
-<h2>Parámetros de entrada</h2>
+<label>Términos (n):</label>
+<input id="n" type="number" value="10">
 
-<label>θ₀</label>
-<input id="theta0" type="number" step="0.1" value="0.5">
-
-<label>ω₀</label>
-<input id="omega0" type="number" step="0.1" value="0">
-
-<label>L</label>
-<input id="L" type="number" step="0.1" value="1">
-
-<label>h</label>
-<input id="h" type="number" step="0.01" value="0.05">
-
-<label>Tiempo</label>
-<input id="t" type="number" step="1" value="10">
-
-<button id="btnSimular">Simular</button>
-</section>
-
-<!-- RESULTADOS -->
-<section class="card">
-<h2>Resultados</h2>
-<pre id="tabla"></pre>
-</section>
+<button id="btnCalcular">Calcular</button>
 
 </div>
 
-<!-- SOLO UNA GRÁFICA -->
-<section class="card">
-<h2>Ángulo vs tiempo</h2>
-<canvas id="graf1"></canvas>
-</section>
-
-<!-- DESCRIPCIÓN SIMPLE -->
-<section class="card">
-<h2>Descripción</h2>
-<p>Simulación básica de un péndulo usando un método numérico para observar el comportamiento del ángulo en el tiempo.</p>
-</section>
-
-</main>
+<div class="card">
+<h2>Resultado</h2>
+<p id="resultado"></p>
+<p id="real"></p>
+<p id="error"></p>
+</div>
 
 <script src="dist/app.js"></script>
 
