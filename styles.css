@@ -1,79 +1,138 @@
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
+/* RESET */
+* {
     margin: 0;
     padding: 0;
-    color: #333;
+    box-sizing: border-box;
 }
 
-/* Título */
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+    padding: 20px;
+}
+
+/* TÍTULO */
 h1 {
     text-align: center;
-    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #38bdf8;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* TARJETAS */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* TARJETA GRANDE RESULTADOS */
+.card.resultados {
+    width: 700px;
+}
+
+/* SUBTÍTULOS */
+.card h2 {
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+/* TEXTOS */
+p {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+/* LABELS */
+label {
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #334155;
     color: white;
 }
 
-/* Tarjeta */
-.card {
-    background: white;
-    padding: 25px;
-    margin: 30px auto;
-    width: 320px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Inputs */
-input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px auto;
-    display: block;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    outline: none;
-    transition: 0.3s;
-}
-
-input:focus {
-    border-color: #4facfe;
-    box-shadow: 0 0 5px rgba(79,172,254,0.5);
-}
-
-/* Botón */
+/* BOTÓN */
 button {
     width: 100%;
     padding: 12px;
-    margin-top: 15px;
+    background: #38bdf8;
     border: none;
-    border-radius: 10px;
-    background: #4facfe;
-    color: white;
-    font-size: 16px;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
 button:hover {
-    background: #00c6ff;
-    transform: scale(1.05);
+    background: #0ea5e9;
+    transform: scale(1.03);
 }
 
-/* Resultados */
-#resultado, #real, #error {
-    font-weight: bold;
-    margin: 10px 0;
+/* TABLA (RESULTADOS) */
+pre {
+    max-height: 500px;
+    overflow-y: auto;
+    font-size: 13px;
+    background: #020617;
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 1.5;
+    white-space: pre-wrap;
 }
 
-/* Animación */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+/* GRÁFICAS */
+canvas {
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* ANIMACIÓN MÁS BONITA */
+#animacion {
+    display: block;
+    margin: auto;
+    background: #f6f3f3;
+    border-radius: 50%;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    .card.resultados {
+        width: 100%;
     }
 }

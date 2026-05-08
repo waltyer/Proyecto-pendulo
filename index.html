@@ -2,33 +2,105 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Avance - Serie de Taylor</title>
-<link rel="stylesheet" href="styles.css">
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Péndulo Explicado PRO</title>
 
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
 <body>
 
-<h1>Cálculo del Seno con Serie de Taylor</h1>
+<main>
 
-<div class="card">
+<h1>Simulación de Péndulo (Métodos Numéricos)</h1>
 
-<label>Ángulo (radianes):</label>
-<input id="angulo" type="number" step="0.1" value="0.5">
+<div class="grid">
 
-<label>Términos (n):</label>
-<input id="n" type="number" value="10">
+<!-- PARÁMETROS -->
+<section class="card">
+<h2>Parámetros de entrada</h2>
 
-<button id="btnCalcular">Calcular</button>
+<label for="theta0">θ₀ (Ángulo inicial)</label>
+<input id="theta0" name="theta0" type="number" step="0.1" value="0.5" required>
+
+<label for="omega0">ω₀ (Velocidad inicial)</label>
+<input id="omega0" name="omega0" type="number" step="0.1" value="0" required>
+
+<label for="L">L (Longitud)</label>
+<input id="L" name="L" type="number" step="0.1" value="1" min="0.1" required>
+
+<label for="h">h (Paso del método)</label>
+<input id="h" name="h" type="number" step="0.01" value="0.05" min="0.001" required>
+
+<label for="t">Tiempo total</label>
+<input id="t" name="t" type="number" step="1" value="10" min="1" required>
+
+<label for="n">n (Términos de Taylor)</label>
+<input id="n" name="n" type="number" step="1" value="5" min="1" required>
+
+<button id="btnSimular">Ejecutar simulación</button>
+</section>
+
+<!-- RESULTADOS -->
+<section class="card resultados">
+<h2>Resultados paso a paso</h2>
+<pre id="tabla"></pre>
+</section>
 
 </div>
 
-<div class="card">
-<h2>Resultado</h2>
-<p id="resultado"></p>
-<p id="real"></p>
-<p id="error"></p>
+<!-- GRÁFICAS -->
+<div class="grid">
+
+<section class="card">
+<h2>Ángulo vs tiempo</h2>
+<canvas id="graf1"></canvas>
+</section>
+
+<section class="card">
+<h2>Error vs tiempo</h2>
+<canvas id="graf2"></canvas>
+</section>
+
+<section class="card">
+<h2>Error vs paso</h2>
+<canvas id="graf3"></canvas>
+</section>
+
 </div>
 
+<!-- ANIMACIÓN -->
+<section class="card" style="max-width:400px; margin:auto;">
+<h2>Animación del péndulo</h2>
+<canvas id="animacion" width="300" height="300"></canvas>
+</section>
+
+<!-- EXPLICACIÓN -->
+<section class="card" style="max-width:900px; margin:auto;">
+<h2>Explicación</h2>
+
+<p><b>θ:</b> ángulo del péndulo (rad).</p>
+<p><b>ω:</b> velocidad angular.</p>
+
+<p><b>Método:</b> Euler-Cromer (estable).</p>
+
+<p><b>Error absoluto:</b> diferencia directa.</p>
+<p><b>Error relativo:</b> porcentaje.</p>
+<p><b>Error Taylor:</b> aproximación del seno.</p>
+
+<p><b>Errores numéricos:</b></p>
+<ul>
+<li>Redondeo (IEEE 754)</li>
+<li>Truncamiento (paso h)</li>
+<li>Propagación</li>
+</ul>
+
+</section>
+
+</main>
+
+<!-- JS -->
 <script src="dist/app.js"></script>
 
 </body>
