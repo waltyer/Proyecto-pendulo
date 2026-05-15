@@ -1,138 +1,219 @@
 /* RESET */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
-/* BODY */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: #e2e8f0;
-    padding: 20px;
+    background-color: #0f0c29;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(73, 56, 218, 0.3), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(206, 45, 187, 0.3), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(52, 189, 235, 0.3), transparent 50%);
+    background-attachment: fixed;
+    color: #ffffff;
+    padding: 30px;
+    min-height: 100vh;
 }
 
-/* TÍTULO */
 h1 {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 28px;
-    color: #38bdf8;
+    margin-bottom: 40px;
+    font-size: 38px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00f2fe, #4facfe, #00f2fe);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
 }
 
-/* GRID */
 .grid {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* TARJETAS */
+/* Glassmorphism Cards */
 .card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-    width: 320px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
-    transition: transform 0.2s;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    width: 360px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* TARJETA GRANDE RESULTADOS */
 .card.resultados {
-    width: 700px;
+    width: 100%;
+    max-width: 900px;
 }
 
-/* SUBTÍTULOS */
 .card h2 {
-    margin-bottom: 10px;
-    color: #38bdf8;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
 }
 
-/* TEXTOS */
-p {
-    font-size: 13px;
-    color: #94a3b8;
+p, li {
+    font-size: 15px;
+    color: #cbd5e1;
     margin-bottom: 10px;
+    line-height: 1.6;
 }
 
-/* LABELS */
+ul {
+    padding-left: 20px;
+}
+
+/* Form Elements */
 label {
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 15px;
     display: block;
+    color: #94a3b8;
+    font-weight: 400;
 }
 
-/* INPUTS */
 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #334155;
+    padding: 12px 15px;
+    margin-top: 6px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.25);
     color: white;
+    font-size: 15px;
+    transition: all 0.3s;
+    outline: none;
 }
 
-/* BOTÓN */
+input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 12px rgba(79, 172, 254, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+}
+
 button {
     width: 100%;
-    padding: 12px;
-    background: #38bdf8;
+    padding: 15px;
+    margin-top: 25px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     border: none;
-    color: black;
-    font-weight: bold;
+    color: #0f0c29;
+    font-weight: 700;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 10px;
-    transition: 0.2s;
+    border-radius: 12px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
 }
 
 button:hover {
-    background: #0ea5e9;
-    transform: scale(1.03);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
 }
 
-/* TABLA (RESULTADOS) */
-pre {
-    max-height: 500px;
+button:active {
+    transform: translateY(1px);
+}
+
+/* Tabla de resultados HTML */
+.table-container {
+    max-height: 400px;
     overflow-y: auto;
-    font-size: 13px;
-    background: #020617;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    color: #e2e8f0;
+    font-size: 15px;
+}
+
+.glass-table th {
+    background: rgba(255, 255, 255, 0.1);
     padding: 15px;
-    border-radius: 10px;
-    line-height: 1.5;
-    white-space: pre-wrap;
+    font-weight: 600;
+    color: #4facfe;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
 }
 
-/* GRÁFICAS */
+.glass-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-variant-numeric: tabular-nums;
+}
+
+.glass-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar personalizado */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+.table-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Gráficas */
 canvas {
-    margin-top: 10px;
-    background: white;
-    border-radius: 10px;
-    padding: 5px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* ANIMACIÓN MÁS BONITA */
+/* Animación */
 #animacion {
     display: block;
-    margin: auto;
-    background: #f6f3f3;
-    border-radius: 50%;
+    margin: 15px auto 0;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.6) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 10px 20px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 380px;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
     .card {
-        width: 100%;
-    }
-
-    .card.resultados {
         width: 100%;
     }
 }

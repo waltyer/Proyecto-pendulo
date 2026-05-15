@@ -1,107 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Péndulo Explicado PRO</title>
 
-<link rel="stylesheet" href="styles.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulación de péndulo simple mediante métodos numéricos. Análisis de error de redondeo y truncamiento.">
+    <title>Péndulo Explicado PRO - Métodos Numéricos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
+
 <body>
 
-<main>
+    <main>
 
-<h1>Simulación de Péndulo (Métodos Numéricos)</h1>
+        <h1>Simulación de Péndulo</h1>
 
-<div class="grid">
+        <div class="grid">
 
-<!-- PARÁMETROS -->
-<section class="card">
-<h2>Parámetros de entrada</h2>
+            <!-- PARÁMETROS -->
+            <section class="card">
+                <h2>Parámetros de entrada</h2>
 
-<label for="theta0">θ₀ (Ángulo inicial)</label>
-<input id="theta0" name="theta0" type="number" step="0.1" value="0.5" required>
+                <label for="theta0">θ₀ (Ángulo inicial - rad)</label>
+                <input id="theta0" name="theta0" type="number" step="0.1" value="0.5" required>
 
-<label for="omega0">ω₀ (Velocidad inicial)</label>
-<input id="omega0" name="omega0" type="number" step="0.1" value="0" required>
+                <label for="omega0">ω₀ (Velocidad inicial - rad/s)</label>
+                <input id="omega0" name="omega0" type="number" step="0.1" value="0" required>
 
-<label for="L">L (Longitud)</label>
-<input id="L" name="L" type="number" step="0.1" value="1" min="0.1" required>
+                <label for="L">L (Longitud del péndulo - m)</label>
+                <input id="L" name="L" type="number" step="0.1" value="1" min="0.1" required>
 
-<label for="h">h (Paso del método)</label>
-<input id="h" name="h" type="number" step="0.01" value="0.05" min="0.001" required>
+                <label for="h">h (Tamaño del paso - s)</label>
+                <input id="h" name="h" type="number" step="0.01" value="0.05" min="0.001" required>
 
-<label for="t">Tiempo total</label>
-<input id="t" name="t" type="number" step="1" value="10" min="1" required>
+                <label for="t">Tiempo total de simulación (s)</label>
+                <input id="t" name="t" type="number" step="1" value="10" min="1" required>
 
-<label for="n">n (Términos de Taylor)</label>
-<input id="n" name="n" type="number" step="1" value="5" min="1" required>
+                <label for="n">n (Términos Serie Taylor para Seno)</label>
+                <input id="n" name="n" type="number" step="1" value="5" min="1" required>
 
-<button id="btnSimular">Ejecutar simulación</button>
-</section>
+                <button id="btnSimular">Ejecutar Simulación</button>
+            </section>
 
-<!-- RESULTADOS -->
-<section class="card resultados">
-<h2>Resultados paso a paso</h2>
-<pre id="tabla"></pre>
-</section>
+            <!-- RESULTADOS -->
+            <section class="card resultados">
+                <h2>Resultados paso a paso</h2>
+                <div id="tabla-container" class="table-container">
+                    <p style="padding: 20px; text-align: center;">Ingrese los parámetros y presione "Ejecutar Simulación" para ver los resultados.</p>
+                </div>
+            </section>
 
-</div>
+        </div>
 
-<!-- GRÁFICAS -->
-<div class="grid">
+        <!-- GRÁFICAS -->
+        <div class="grid">
 
-<section class="card">
-<h2>Ángulo vs tiempo</h2>
-<canvas id="graf1"></canvas>
-</section>
+            <section class="card resultados">
+                <h2>Ángulo vs tiempo</h2>
+                <canvas id="graf1" aria-label="Gráfica de ángulo respecto al tiempo" role="img"></canvas>
+            </section>
 
-<section class="card">
-<h2>Error vs tiempo</h2>
-<canvas id="graf2"></canvas>
-</section>
+            <section class="card resultados">
+                <h2>Error vs tiempo</h2>
+                <canvas id="graf2" aria-label="Gráfica de error respecto al tiempo" role="img"></canvas>
+            </section>
 
-<section class="card">
-<h2>Error vs paso</h2>
-<canvas id="graf3"></canvas>
-</section>
+            <section class="card resultados">
+                <h2>Error vs tamaño de paso</h2>
+                <canvas id="graf3" aria-label="Gráfica de error respecto al tamaño de paso" role="img"></canvas>
+            </section>
 
-</div>
+        </div>
 
-<!-- ANIMACIÓN -->
-<section class="card" style="max-width:400px; margin:auto;">
-<h2>Animación del péndulo</h2>
-<canvas id="animacion" width="300" height="300"></canvas>
-</section>
+        <div class="grid">
+            <!-- ANIMACIÓN -->
+            <section class="card" style="width: 100%; max-width: 450px;">
+                <h2 style="text-align: center;">Animación del péndulo</h2>
+                <canvas id="animacion" width="380" height="380" aria-label="Animación del movimiento del péndulo" role="img"></canvas>
+            </section>
 
-<!-- EXPLICACIÓN -->
-<section class="card" style="max-width:900px; margin:auto;">
-<h2>Explicación</h2>
+            <!-- EXPLICACIÓN -->
+            <section class="card">
+                <h2>Análisis y Explicación</h2>
 
-<p><b>θ:</b> ángulo del péndulo (rad).</p>
-<p><b>ω:</b> velocidad angular.</p>
+                <p><b>θ (Ángulo):</b> Posición angular del péndulo en radianes.</p>
+                <p><b>ω (Velocidad):</b> Velocidad angular en rad/s.</p>
 
-<p><b>Método:</b> Euler-Cromer (estable).</p>
+                <p><b>Método Numérico:</b> Se utiliza el método de <strong>Euler Explícito</strong> para aproximar la solución del sistema de ecuaciones diferenciales no lineales.</p>
 
-<p><b>Error absoluto:</b> diferencia directa.</p>
-<p><b>Error relativo:</b> porcentaje.</p>
-<p><b>Error Taylor:</b> aproximación del seno.</p>
+                <p><b>Análisis de Errores:</b></p>
+                <ul>
+                    <li><strong>Error de Truncamiento (Función):</strong> Error al aproximar <code>sin(θ)</code> usando solo <code>n</code> términos de la serie de Taylor.</li>
+                    <li><strong>Error de Truncamiento (Método):</strong> Generado por aproximar las derivadas en intervalos finitos <code>h</code>. A menor <code>h</code>, menor error de truncamiento (hasta cierto límite).</li>
+                    <li><strong>Error de Redondeo:</strong> Introducido por la representación en coma flotante (IEEE 754) en la computadora al acumular operaciones iterativas.</li>
+                    <li><strong>Error de Propagación:</strong> Los errores de los pasos anteriores se propagan y amplifican en los pasos siguientes.</li>
+                </ul>
 
-<p><b>Errores numéricos:</b></p>
-<ul>
-<li>Redondeo (IEEE 754)</li>
-<li>Truncamiento (paso h)</li>
-<li>Propagación</li>
-</ul>
+            </section>
+        </div>
 
-</section>
+    </main>
 
-</main>
-
-<!-- JS -->
-<script src="dist/app.js"></script>
+    <!-- JS -->
+    <script src="dist/app.js"></script>
 
 </body>
+
 </html>
