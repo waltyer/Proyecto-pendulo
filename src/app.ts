@@ -1,21 +1,21 @@
 "use strict";
 
-// ================= DECLARACIÓN PARA CHART.JS =================
+// DECLARACIÓN PARA CHART.JS 
 declare var Chart: any;
 
 // Configuraciones globales para Chart.js para que se vea bien con el tema oscuro
 Chart.defaults.color = '#cbd5e1';
 Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)';
 
-// ================= TIPOS =================
+//TIPOS 
 type NullableChart = any | null;
 
-// ================= VARIABLES =================
+//VARIABLES 
 let chart1: NullableChart = null;
 let chart2: NullableChart = null;
 let chart3: NullableChart = null;
 
-// ================= SENO TAYLOR =================
+// SENO TAYLOR 
 function senoTaylor(x: number, n: number): number {
     let s = 0;
     let termino = x;
@@ -29,7 +29,7 @@ function senoTaylor(x: number, n: number): number {
     return s;
 }
 
-// ================= ANIMACIÓN =================
+//  ANIMACIÓN 
 function animarPendulo(theta_arr: number[], h: number): void {
 
     const canvas = document.getElementById("animacion") as HTMLCanvasElement;
@@ -123,7 +123,7 @@ function animarPendulo(theta_arr: number[], h: number): void {
     dibujar();
 }
 
-// ================= FUNCIÓN PRINCIPAL =================
+// FUNCIÓN PRINCIPAL 
 function simular(): void {
 
     const theta0Input = document.getElementById("theta0") as HTMLInputElement | null;
@@ -355,7 +355,7 @@ function simular(): void {
     animarPendulo(theta_arr, h);
 }
 
-// ================= EVENTO BOTÓN =================
+//  EVENTO BOTÓN 
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("btnSimular");
     btn?.addEventListener("click", simular);
